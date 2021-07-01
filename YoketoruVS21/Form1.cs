@@ -14,6 +14,24 @@ namespace YoketoruVS21
     public partial class Form1 : Form
     {
         const bool isDebug = true;
+
+        const int PlayerMax = 1;
+        const int EnemyMax = 3;
+        const int ItemMax = 3;
+        const int ChrMax = PlayerMax + EnemyMax + ItemMax;
+
+        Label[] chrs = new Label[ChrMax];
+
+        const int PlayerIndex = 0;
+        const int EnemyIndex = PlayerMax;
+        const int ItemIndex = EnemyIndex + EnemyMax;
+
+        const string PlayerText = "(・▽・)";
+        const string EnemyText = "(^^)";
+        const string ItemText = "☆";
+
+        static Random rand = new Random();
+
         enum State
         {
             None=-1, //無効
@@ -31,6 +49,25 @@ namespace YoketoruVS21
         public Form1()
         {
             InitializeComponent();
+
+            for(int i=0;i<ChrMax;i++)
+            {
+                chrs[i] = new Label();
+                chrs[i].AutoSize = true;
+                if(i==PlayerIndex)
+                {
+                    chrs[i].Text = PlayerText;
+                }
+                else if (i>ItemIndex)
+                {
+                    chrs[i].Text = EnemyText;
+                }
+                else
+                {
+                    chrs[i].Text = ItemText;
+                }
+                Controls.Add(chrs[i]);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -56,7 +93,14 @@ namespace YoketoruVS21
             {
                 initProc();
             }
+
+            if (currentState == State.Game)
+            {
+                UpdateGame();
+            }
+
         }
+
 
         void initProc()
         {
@@ -80,6 +124,12 @@ namespace YoketoruVS21
                     startbutton.Visible = false;
                     copyrightlabel.Visible = false;
                     Highlabel.Visible = false;
+
+                    for(int i=EnemyIndex;i<ChrMax;i++)
+                    {
+                        chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                        chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                    }
                     break;
 
                 case State.Gameover:
@@ -90,8 +140,20 @@ namespace YoketoruVS21
                 case State.Clear:
                     titlebutton.Visible = true;
                     Clearlabel.Visible = true;
+
+
                     break;
+
             }
+        }
+
+        void UpdateGame()
+
+        {
+            Point mp = PointToClient(MousePosition);
+
+
+            //TODO: mpがプレイヤーラベルの中心になるように設定
         }
 
         private void startbutton_Click(object sender, EventArgs e)
@@ -102,6 +164,11 @@ namespace YoketoruVS21
         private void titlebutton_Click(object sender, EventArgs e)
         {
             nextState = State.Title;
+        }
+
+        private void Gameoverlabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

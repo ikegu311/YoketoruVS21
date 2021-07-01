@@ -99,26 +99,27 @@ namespace YoketoruVS21
             // Gameoverlabel
             // 
             this.Gameoverlabel.AutoSize = true;
-            this.Gameoverlabel.BackColor = System.Drawing.Color.White;
-            this.Gameoverlabel.Font = new System.Drawing.Font("HG創英角ｺﾞｼｯｸUB", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Gameoverlabel.BackColor = System.Drawing.Color.Aquamarine;
+            this.Gameoverlabel.Font = new System.Drawing.Font("Stencil Std", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Gameoverlabel.ForeColor = System.Drawing.Color.Blue;
-            this.Gameoverlabel.Location = new System.Drawing.Point(301, 196);
+            this.Gameoverlabel.Location = new System.Drawing.Point(268, 196);
             this.Gameoverlabel.Name = "Gameoverlabel";
-            this.Gameoverlabel.Size = new System.Drawing.Size(185, 40);
+            this.Gameoverlabel.Size = new System.Drawing.Size(265, 53);
             this.Gameoverlabel.TabIndex = 5;
-            this.Gameoverlabel.Text = "Gameover";
+            this.Gameoverlabel.Text = "Game over";
+            this.Gameoverlabel.Click += new System.EventHandler(this.Gameoverlabel_Click);
             // 
             // Clearlabel
             // 
             this.Clearlabel.AutoSize = true;
-            this.Clearlabel.BackColor = System.Drawing.Color.White;
-            this.Clearlabel.Font = new System.Drawing.Font("HGS創英角ｺﾞｼｯｸUB", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Clearlabel.BackColor = System.Drawing.Color.Aquamarine;
+            this.Clearlabel.Font = new System.Drawing.Font("Stencil Std", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Clearlabel.ForeColor = System.Drawing.Color.Red;
-            this.Clearlabel.Location = new System.Drawing.Point(337, 196);
+            this.Clearlabel.Location = new System.Drawing.Point(306, 199);
             this.Clearlabel.Name = "Clearlabel";
-            this.Clearlabel.Size = new System.Drawing.Size(114, 40);
+            this.Clearlabel.Size = new System.Drawing.Size(188, 53);
             this.Clearlabel.TabIndex = 6;
-            this.Clearlabel.Text = "Clear";
+            this.Clearlabel.Text = "Clear!!";
             // 
             // titlebutton
             // 
