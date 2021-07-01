@@ -150,6 +150,8 @@ namespace YoketoruVS21
         void UpdateGame()
 
         {
+            Point spos = MousePosition;
+            Point fpos = PointToClient(spos);
             Point mp = PointToClient(MousePosition);
 
 
