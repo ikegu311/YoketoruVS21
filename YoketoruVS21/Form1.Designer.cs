@@ -29,6 +29,7 @@ namespace YoketoruVS21
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.startbutton = new System.Windows.Forms.Button();
             this.Titlelabel = new System.Windows.Forms.Label();
             this.copyrightlabel = new System.Windows.Forms.Label();
@@ -36,19 +37,22 @@ namespace YoketoruVS21
             this.Timelabel = new System.Windows.Forms.Label();
             this.Gameoverlabel = new System.Windows.Forms.Label();
             this.Clearlabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.titlebutton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // startbutton
             // 
-            this.startbutton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.startbutton.BackColor = System.Drawing.Color.DarkSlateGray;
             this.startbutton.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.startbutton.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.startbutton.Location = new System.Drawing.Point(311, 270);
             this.startbutton.Name = "startbutton";
             this.startbutton.Size = new System.Drawing.Size(179, 59);
             this.startbutton.TabIndex = 0;
             this.startbutton.Text = "スタート";
             this.startbutton.UseVisualStyleBackColor = false;
+            this.startbutton.Click += new System.EventHandler(this.startbutton_Click);
             // 
             // Titlelabel
             // 
@@ -84,10 +88,10 @@ namespace YoketoruVS21
             // Timelabel
             // 
             this.Timelabel.AutoSize = true;
-            this.Timelabel.Font = new System.Drawing.Font("Yu Gothic UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Timelabel.Font = new System.Drawing.Font("メイリオ", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Timelabel.Location = new System.Drawing.Point(12, 9);
             this.Timelabel.Name = "Timelabel";
-            this.Timelabel.Size = new System.Drawing.Size(127, 37);
+            this.Timelabel.Size = new System.Drawing.Size(144, 41);
             this.Timelabel.TabIndex = 4;
             this.Timelabel.Text = "Time 100";
             // 
@@ -95,11 +99,11 @@ namespace YoketoruVS21
             // 
             this.Gameoverlabel.AutoSize = true;
             this.Gameoverlabel.BackColor = System.Drawing.Color.White;
-            this.Gameoverlabel.Font = new System.Drawing.Font("Yu Gothic UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Gameoverlabel.Font = new System.Drawing.Font("HG創英角ｺﾞｼｯｸUB", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Gameoverlabel.ForeColor = System.Drawing.Color.Blue;
             this.Gameoverlabel.Location = new System.Drawing.Point(301, 196);
             this.Gameoverlabel.Name = "Gameoverlabel";
-            this.Gameoverlabel.Size = new System.Drawing.Size(202, 54);
+            this.Gameoverlabel.Size = new System.Drawing.Size(185, 40);
             this.Gameoverlabel.TabIndex = 5;
             this.Gameoverlabel.Text = "Gameover";
             // 
@@ -107,24 +111,29 @@ namespace YoketoruVS21
             // 
             this.Clearlabel.AutoSize = true;
             this.Clearlabel.BackColor = System.Drawing.Color.White;
-            this.Clearlabel.Font = new System.Drawing.Font("Yu Gothic UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Clearlabel.Font = new System.Drawing.Font("HGS創英角ｺﾞｼｯｸUB", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Clearlabel.ForeColor = System.Drawing.Color.Red;
             this.Clearlabel.Location = new System.Drawing.Point(337, 196);
             this.Clearlabel.Name = "Clearlabel";
-            this.Clearlabel.Size = new System.Drawing.Size(113, 54);
+            this.Clearlabel.Size = new System.Drawing.Size(114, 40);
             this.Clearlabel.TabIndex = 6;
             this.Clearlabel.Text = "Clear";
             // 
-            // button1
+            // titlebutton
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button1.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(543, 270);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(179, 59);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "タイトルへ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.titlebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.titlebutton.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.titlebutton.Location = new System.Drawing.Point(311, 314);
+            this.titlebutton.Name = "titlebutton";
+            this.titlebutton.Size = new System.Drawing.Size(179, 59);
+            this.titlebutton.TabIndex = 7;
+            this.titlebutton.Text = "タイトルへ";
+            this.titlebutton.UseVisualStyleBackColor = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -132,7 +141,7 @@ namespace YoketoruVS21
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aquamarine;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.titlebutton);
             this.Controls.Add(this.Clearlabel);
             this.Controls.Add(this.Gameoverlabel);
             this.Controls.Add(this.Timelabel);
@@ -156,7 +165,9 @@ namespace YoketoruVS21
         private System.Windows.Forms.Label Timelabel;
         private System.Windows.Forms.Label Gameoverlabel;
         private System.Windows.Forms.Label Clearlabel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button titlebutton;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label titlelabel;
     }
 }
 
