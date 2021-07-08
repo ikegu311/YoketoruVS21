@@ -50,6 +50,8 @@ namespace YoketoruVS21
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vKey);
 
+        int ItemCount;
+
         public Form1()
         {
             InitializeComponent();
@@ -173,7 +175,7 @@ namespace YoketoruVS21
                 {
                     vx[i] = Math.Abs(vx[i]);
                 }
-                if (chrs[i].Top < 0)
+                if(chrs[i].Top<0)
                 {
                     vy[i] = Math.Abs(vy[i]);
                 }
@@ -181,7 +183,7 @@ namespace YoketoruVS21
                 {
                     vx[i] = -Math.Abs(vx[i]);
                 }
-                if (chrs[i].Bottom < ClientSize.Height)
+                if (chrs[i].Bottom > ClientSize.Height)
                 {
                     vy[i] = -Math.Abs(vy[i]);
                 }
@@ -202,6 +204,8 @@ namespace YoketoruVS21
                     else
                     {
                         chrs[i].Visible = false;
+                        ItemCount--;
+                        leftlabel.Text = "☆:" + ItemCount;
                     }
        
                 }

@@ -153,7 +153,7 @@ namespace YoketoruVS21
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aquamarine;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 453);
             this.Controls.Add(this.leftlabel);
             this.Controls.Add(this.titlebutton);
             this.Controls.Add(this.Clearlabel);
