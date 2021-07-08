@@ -102,7 +102,7 @@ namespace YoketoruVS21
             this.Gameoverlabel.BackColor = System.Drawing.Color.Aquamarine;
             this.Gameoverlabel.Font = new System.Drawing.Font("Stencil Std", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Gameoverlabel.ForeColor = System.Drawing.Color.Blue;
-            this.Gameoverlabel.Location = new System.Drawing.Point(268, 196);
+            this.Gameoverlabel.Location = new System.Drawing.Point(270, 169);
             this.Gameoverlabel.Name = "Gameoverlabel";
             this.Gameoverlabel.Size = new System.Drawing.Size(265, 53);
             this.Gameoverlabel.TabIndex = 5;
@@ -115,7 +115,7 @@ namespace YoketoruVS21
             this.Clearlabel.BackColor = System.Drawing.Color.Aquamarine;
             this.Clearlabel.Font = new System.Drawing.Font("Stencil Std", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Clearlabel.ForeColor = System.Drawing.Color.Red;
-            this.Clearlabel.Location = new System.Drawing.Point(306, 199);
+            this.Clearlabel.Location = new System.Drawing.Point(311, 144);
             this.Clearlabel.Name = "Clearlabel";
             this.Clearlabel.Size = new System.Drawing.Size(188, 53);
             this.Clearlabel.TabIndex = 6;

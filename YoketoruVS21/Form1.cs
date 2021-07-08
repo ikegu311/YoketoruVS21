@@ -18,8 +18,8 @@ namespace YoketoruVS21
         const int SpeedMax = 20;
 
         const int PlayerMax = 1;
-        const int EnemyMax = 5;
-        const int ItemMax = 10;
+        const int EnemyMax = 3;
+        const int ItemMax = 3;
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
 
         Label[] chrs = new Label[ChrMax];
@@ -54,6 +54,7 @@ namespace YoketoruVS21
 
         int ItemCount=0;
         int time = 0;
+        int hiscore=0;
 
 
         public Form1()
@@ -128,6 +129,7 @@ namespace YoketoruVS21
                     Gameoverlabel.Visible = false;
                     titlebutton.Visible = false;
                     Clearlabel.Visible = false;
+                    Highlabel.Text = "Highscore" + time;
                     break;
 
                 case State.Game:
@@ -142,6 +144,7 @@ namespace YoketoruVS21
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                         vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                         vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                        chrs[i].Visible = true;
                     }
 
                     ItemCount = ItemMax;
@@ -157,8 +160,12 @@ namespace YoketoruVS21
                 case State.Clear:
                     titlebutton.Visible = true;
                     Clearlabel.Visible = true;
-
-
+                    Highlabel.Visible = true;
+                    if(time>hiscore)
+                    {
+                        hiscore = time;
+                        Highlabel.Text = "HighScore" + hiscore;
+                    }
                     break;
 
             }
@@ -168,7 +175,11 @@ namespace YoketoruVS21
 
         {
             time--;
-            Timelabel.Text = "Time" + time;
+            Timelabel.Text = $"Time" + time;
+            if(time<=0)
+            {
+                nextState = State.Gameover;
+            }
 
             Point mp = PointToClient(MousePosition);
 
