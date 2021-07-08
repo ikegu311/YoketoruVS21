@@ -18,8 +18,8 @@ namespace YoketoruVS21
         const int SpeedMax = 20;
 
         const int PlayerMax = 1;
-        const int EnemyMax = 3;
-        const int ItemMax = 3;
+        const int EnemyMax = 5;
+        const int ItemMax = 10;
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
 
         Label[] chrs = new Label[ChrMax];
@@ -29,6 +29,8 @@ namespace YoketoruVS21
         const int PlayerIndex = 0;
         const int EnemyIndex = PlayerMax;
         const int ItemIndex = EnemyIndex + EnemyMax;
+
+        const int StartTime=100;
 
         const string PlayerText = "(・▽・)";
         const string EnemyText = "(^^)";
@@ -50,7 +52,9 @@ namespace YoketoruVS21
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vKey);
 
-        int ItemCount;
+        int ItemCount=0;
+        int time = 0;
+
 
         public Form1()
         {
@@ -139,6 +143,10 @@ namespace YoketoruVS21
                         vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                         vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                     }
+
+                    ItemCount = ItemMax;
+                    time = StartTime+1;
+
                     break;
 
                 case State.Gameover:
@@ -159,6 +167,9 @@ namespace YoketoruVS21
         void UpdateGame()
 
         {
+            time--;
+            Timelabel.Text = "Time" + time;
+
             Point mp = PointToClient(MousePosition);
 
 
@@ -168,6 +179,8 @@ namespace YoketoruVS21
 
             for (int i = EnemyIndex; i < ChrMax; i++)
             {
+                if (!chrs[i].Visible) continue;
+
                 chrs[i].Left += vx[i];
                 chrs[i].Top += vy[i];
 
@@ -205,7 +218,15 @@ namespace YoketoruVS21
                     {
                         chrs[i].Visible = false;
                         ItemCount--;
+                        if(ItemCount<=0)
+                        {
+                            nextState = State.Clear;
+                        }
                         leftlabel.Text = "☆:" + ItemCount;
+
+                        vx[i] = 0;
+                        vy[i] = 0;
+                        chrs[i].Left = 10000;
                     }
        
                 }
